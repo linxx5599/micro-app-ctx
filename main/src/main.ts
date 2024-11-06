@@ -21,7 +21,6 @@ microApp.start({
                 }
               );
             }
-
             return code;
           },
         },

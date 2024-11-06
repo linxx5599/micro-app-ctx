@@ -5,11 +5,9 @@
   "main": "index.js",
   "private": true,
   "scripts": {
-    "bootstrap": "pnpm install && pnpm install:main && pnpm install:child-vite-vue3",
+    "bootstrap": "pnpm install && pnpm install:main && cd scripts && pnpm install && pnpm bootstrap",
     "install:main": "cd main && pnpm install",
-    "install:child-vite-vue3": "cd child_apps/vite-vue3 && pnpm install",
-    "dev-main:vite": "cd main && pnpm dev",
-    "dev-child:child-vite-vue3": "cd child_apps/vite-vue3 && pnpm dev"
+    "dev-main:vite": "cd main && pnpm dev"
   },
   "keywords": [
     "micro-app",

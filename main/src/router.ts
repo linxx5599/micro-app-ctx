@@ -12,6 +12,11 @@ const routes: Array<RouteRecordRaw> = [
     name: 'vite',
     component: () => import('./views/vite.vue'),
   },
+  {
+    path: '/app-react:page*',
+    name: 'react',
+    component: () => import('./views/react.vue'),
+  },
 ]
 
 const router = createRouter({
