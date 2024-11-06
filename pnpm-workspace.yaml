@@ -1,0 +1,3 @@
+packages:
+  - 'main'
+  - 'child_apps/*'

@@ -1,0 +1,22 @@
+{
+  "name": "micro-app",
+  "version": "1.0.0",
+  "description": "micro-app 案例",
+  "main": "index.js",
+  "private": true,
+  "scripts": {
+    "bootstrap": "pnpm install && pnpm install:main && pnpm install:child-vite-vue3",
+    "install:main": "cd main && pnpm install",
+    "install:child-vite-vue3": "cd child_apps/vite-vue3 && pnpm install",
+    "dev-main:vite": "cd main && pnpm dev",
+    "dev-child:child-vite-vue3": "cd child_apps/vite-vue3 && pnpm dev"
+  },
+  "keywords": [
+    "micro-app",
+    "react18"
+  ],
+  "license": "MIT",
+  "dependencies": {
+    "@micro-zoe/micro-app": "latest"
+  }
+}
