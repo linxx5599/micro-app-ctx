@@ -16,11 +16,11 @@ const p = [];
 for (const k in remote) {
   const v = remote[k];
   const GIT_PATH = path.resolve(APP_PATH + "/" + k, ".git");
-  //拉取远程仓库代码
-  if (!fs.existsSync(GIT_PATH)) {
-    const promise = new Promise((resolve, reject) => {
+  const promise = new Promise((resolve, reject) => {
+    //拉取远程仓库代码
+    if (!fs.existsSync(GIT_PATH)) {
       exec(
-        `cd../${CHILD_APPS} && git clone ${v} ${k}`,
+        `cd ../${CHILD_APPS} && git clone ${v} ${k}`,
         (error, stdout, stderr) => {
           if (error) {
             reject();
@@ -34,9 +34,23 @@ for (const k in remote) {
           resolve();
         }
       );
-    });
-    p.push(promise);
-  }
+    } else {
+      //更新远程仓库代码
+      exec(`cd ../${CHILD_APPS} && git pull`, (error, stdout, stderr) => {
+        if (error) {
+          reject();
+          return console.error(`执行错误: ${error}`);
+        }
+        console.log(`标准输出: ${stdout}`);
+        if (stderr && stderr.includes("fatal:")) {
+          return console.error(`标准错误输出: ${stderr}`);
+        }
+        console.log(`更新远程仓库代码${k}成功...`);
+        resolve();
+      });
+    }
+  });
+  p.push(promise);
 }
 
 Promise.all(p).then(() => {

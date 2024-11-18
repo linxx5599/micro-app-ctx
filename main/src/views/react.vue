@@ -1,6 +1,6 @@
 <template>
   <div class="react">
-    <micro-app name='react' url='http://localhost:8888/' :data='data'>
+    <micro-app name='react' url='http://localhost:8888/child/react/' :data='data'>
       <!-- destroy inline -->
     </micro-app>
   </div>
